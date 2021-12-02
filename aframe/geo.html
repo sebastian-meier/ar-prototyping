@@ -29,5 +29,13 @@
       gps-camera='minDistance: 0; gpsMinDistance: 5; simulateLatitude: 52; simulateLongitude: 13'
       rotation-reader></a-camera>
   </a-scene>
+  <script>
+    window.addEventListener('load', () => {
+      const camera = document.querySelector('[camera]');
+      marker.addEventListener('gps-camera-update-positon', (e) => {
+        console.log('gps-camera-update-positon', e);
+      });
+    });
+  </script>
 </body>
 </html>
