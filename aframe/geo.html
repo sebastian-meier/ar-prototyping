@@ -22,6 +22,16 @@
         <!-- ~ 0m far -->
         <a-image src="place.png" gps-entity-place="latitude: 44.504348; longitude: 11.301027;"
             ></a-image>
+        
+        
+        <a-box
+          color="red"
+          depth="1"
+          height="1"
+          width="1"
+          rotation="0 0 0"
+          gps-entity-place="latitude: 44.504348; longitude: 11.301027;"
+          position="0 0 0" />
 
         <!-- using gpsMinDistance: 5 => update GPS only if user moves by 5 meters or more => avoid shaking for near objects -->
         <!-- using accelerationToMove: 1.0 => 'smooth' inertial sensors precision precision in order to avoid distant places shaking -->
