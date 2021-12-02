@@ -6,7 +6,10 @@
   <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
 </head>
 <body style='margin : 0px; overflow: hidden;'>
-  <a-scene embedded arjs>
+  <a-scene
+    vr-mode-ui="enabled: false"
+    embedded
+    arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;">
     <!-- create your content here. just a box for now -->
     <!-- <a-box position='0 0.5 0' material='opacity: 0.5;'></a-box> -->
     <!-- define a camera which will move according to the marker position -->
@@ -17,8 +20,8 @@
       height="1"
       width="1"
       rotation="0 0 0"
-      gps-entity-place="latitude: 52.0001; longitude: 13.0001"
-      position="0 5 0" />
+      gps-entity-place="latitude: 52.001; longitude: 13.001"
+      position="0 0 0" />
     <a-camera
       id='camera1'
       look-controls-enabled='false'
