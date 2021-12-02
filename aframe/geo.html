@@ -3,39 +3,33 @@
 <head>
   <meta charset="utf-8">
   <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+  <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
   <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
 </head>
-<body style='margin : 0px; overflow: hidden;'>
-  <a-scene
-    vr-mode-ui="enabled: false"
-    embedded
-    arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;">
-    <!-- create your content here. just a box for now -->
-    <!-- <a-box position='0 0.5 0' material='opacity: 0.5;'></a-box> -->
-    <!-- define a camera which will move according to the marker position -->
-    <!-- <a-marker-camera preset='hiro'></a-marker-camera> -->
-    <a-box
-      color="red"
-      depth="1"
-      height="1"
-      width="1"
-      rotation="0 0 0"
-      gps-entity-place="latitude: 52; longitude: 13"
-      position="5 5 5" />
-    <a-camera
-      id='camera1'
-      look-controls-enabled='false'
-      arjs-look-controls='smoothingFactor: 0.1'
-      gps-camera='minDistance: 0; gpsMinDistance: 5; simulateLatitude: 52; simulateLongitude: 13'
-      rotation-reader></a-camera>
-  </a-scene>
-  <script>
-    window.addEventListener('load', () => {
-      const camera = document.querySelector('[camera]');
-      camera.addEventListener('gps-camera-update-positon', (e) => {
-        console.log('gps-camera-update-positon', e);
-      });
-    });
-  </script>
+<body style='margin: 0; overflow: hidden;'>
+    <a-scene
+        vr-mode-ui="enabled: false"
+		embedded
+		arjs='sourceType: webcam; debugUIEnabled: false;'>
+
+        <!-- ~ 400m far -->
+        <!-- <a-box material="color: red;" scale="5 5 5" gps-entity-place="latitude: 44.506477; longitude: 11.301524;"></a-box> -->
+
+        <!-- ~ 20m far -->
+        <!-- <a-image src="place.png" gps-entity-place="latitude: 44.504417; longitude: 11.301317;"
+        ></a-image> -->
+
+        <!-- ~ 0m far -->
+        <a-image src="place.png" gps-entity-place="latitude: 44.504348; longitude: 11.301027;"
+            ></a-image>
+
+        <!-- using gpsMinDistance: 5 => update GPS only if user moves by 5 meters or more => avoid shaking for near objects -->
+        <!-- using accelerationToMove: 1.0 => 'smooth' inertial sensors precision precision in order to avoid distant places shaking -->
+        <a-camera
+            rotation-reader
+            gps-camera="simulateLatitude: 44.50437; simulateLongitude: 11.30106; gpsMinDistance: 10;"
+        >
+		</a-camera>
+	</a-scene>
 </body>
 </html>
