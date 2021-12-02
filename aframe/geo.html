@@ -32,7 +32,7 @@
   <script>
     window.addEventListener('load', () => {
       const camera = document.querySelector('[camera]');
-      marker.addEventListener('gps-camera-update-positon', (e) => {
+      camera.addEventListener('gps-camera-update-positon', (e) => {
         console.log('gps-camera-update-positon', e);
       });
     });
