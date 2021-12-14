@@ -27,12 +27,15 @@
   </head>
   <body>
   <div class="arjs-loader">
-    <div>Loading, please wait...</div>
+    <div>V2: Loading, please wait...</div>
   </div>
     <a-scene vr-mode-ui="enabled: false;"
     renderer="logarithmicDepthBuffer: true;"
     embedded
     arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;">
+    <a-assets timeout="3000">
+        <img id="marker-image" src="../assets/images/marker.png">
+      </a-assets>
     <!--<a-nft
       type="nft"
       url="../assets/personal/map"
@@ -45,13 +48,14 @@
       </a-nft>-->
       <a-nft
         type="nft"
+        size="0.2"
         url="ar-prototyping/assets/personal/figure"
         smooth="true"
-        smoothCount="10"
+        smoothCount="5"
         smoothTolerance=".01"
-        smoothThreshold="5"
+        smoothThreshold="2"
       >
-        <a-box position="50 150 0" width="5" height="5" color="#4CC3D9"></a-box>
+       <a-image position="200 50 0" rotation="-90 0 0" width="100" height="150" src="#marker-image"></a-image>
       </a-nft>
       <a-entity camera></a-entity>
     </a-scene>
