@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+    <script src="../assets/aframe/aframe-v1.2.0.min.js"></script>
+    <script src="../assets/arjs/aframe-ar.js"></script>
+    <script>
+      AFRAME.registerComponent('mythreejsthing', {
+        schema: {
+          color: {
+            default: '#000'
+          },
+        },
+
+        update: function() {
+          var material = new THREE.MeshBasicMaterial({
+            color: this.data.color,
+            wireframe: true
+          });
+
+          var geometry = new THREE.BoxGeometry(1, 1, 1);
+
+          this.el.setObject3D('mesh', new THREE.Mesh(geometry, material));
+        },
+
+        tick: function (time, timeDelta) {
+          this.el.object3D.rotation.x += 0.1 * Math.PI / 180;
+        },
+
+        remove: function() {
+          this.el.removeObject3D('mesh');
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <a-scene embedded arjs>
+      <a-entity mythreejsthing="color: green;" position="0 1 -5"> </a-entity>                                                            
+    </a-scene>
+  </body>
+</html>
