@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+    <script src="../assets/aframe/aframe-v1.2.0.min.js"></script>
+    <script src="../assets/arjs/aframe-ar-nft.js"></script>
+    <style>
+      .arjs-loader {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.8);
+        z-index: 9999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .arjs-loader div {
+        text-align: center;
+        font-size: 1.25em;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+  <div class="arjs-loader">
+    <div>V6: Loading, please wait...</div>
+  </div>
+    <a-scene vr-mode-ui="enabled: false;"
+    renderer="logarithmicDepthBuffer: true;"
+    embedded
+    arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;">
+      <a-assets timeout="3000">
+        <img id="marker-image" src="../assets/images/marker.png">
+      </a-assets>
+      <a-nft
+        type="nft"
+        size="0.2"
+        url="ar-prototyping/assets/personal/figure"
+        smooth="true"
+        smoothCount="5"
+        smoothTolerance=".1"
+        smoothThreshold="2"
+      >
+       <a-image position="250 0 50" rotation="-90 0 0" width="100" height="150" src="#marker-image"></a-image>
+      </a-nft>
+      <a-entity camera></a-entity>
+    </a-scene>
+  </body>
+</html>

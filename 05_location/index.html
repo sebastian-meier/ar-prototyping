@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/Article">
+<head>
+  <meta charset="utf-8">
+  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+  <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+</head>
+<body style='margin: 0; overflow: hidden;'>
+    <a-scene
+        vr-mode-ui="enabled: false"
+		embedded
+		arjs='sourceType: webcam; debugUIEnabled: false;'>
+
+        <!-- ~ 400m far -->
+        <!-- <a-box material="color: red;" scale="5 5 5" gps-entity-place="latitude: 44.506477; longitude: 11.301524;"></a-box> -->
+
+        <!-- ~ 20m far -->
+        <!-- <a-image src="place.png" gps-entity-place="latitude: 44.504417; longitude: 11.301317;"
+        ></a-image> -->
+
+        <!-- ~ 0m far -->
+        <!-- <a-image
+          src="place.png"
+          gps-entity-place="latitude: 44.504348; longitude: 11.301027;"
+          ></a-image> -->
+        
+        
+        <a-box
+          color="red"
+          depth="0.25"
+          height="0.25"
+          width="0.25"
+          position="0 1 0"
+          rotation="45 0 0"
+          gps-entity-place="latitude: 44.504348; longitude: 11.301027;"
+          ></a-box>
+
+        <!-- look-at="[gps-camera]" -->
+
+        <!-- using gpsMinDistance: 5 => update GPS only if user moves by 5 meters or more => avoid shaking for near objects -->
+        <!-- using accelerationToMove: 1.0 => 'smooth' inertial sensors precision precision in order to avoid distant places shaking -->
+        <a-camera
+            rotation-reader
+            gps-camera="simulateLatitude: 44.50437; simulateLongitude: 11.30106; gpsMinDistance: 10;"
+        >
+		</a-camera>
+	</a-scene>
+  <div style="
+    position:fixed;
+    z-index:999;
+    top:0;
+    left:0;
+    background:white;
+    color:black;
+    padding: 3px 5px;
+    border: 1px solid black;
+  ">v0.118</div>
+</body>
+</html>
