@@ -4,8 +4,31 @@
   <meta charset="utf-8">
     <script src="../assets/aframe/aframe-v1.2.0.min.js"></script>
     <script src="../assets/arjs/aframe-ar-nft.js"></script>
+    <style>
+      .arjs-loader {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.8);
+        z-index: 9999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .arjs-loader div {
+        text-align: center;
+        font-size: 1.25em;
+        color: white;
+      }
+    </style>
   </head>
   <body>
+  <div class="arjs-loader">
+    <div>Loading, please wait...</div>
+  </div>
     <a-scene vr-mode-ui="enabled: false;"
     renderer="logarithmicDepthBuffer: true;"
     embedded
@@ -21,16 +44,14 @@
       <a-box position='0 0.5 0' material='opacity: 0.5;'></a-box>
       </a-nft>-->
       <a-nft
-      type="nft"
-      url="ar-prototyping/assets/personal/figure"
-      smooth="true"
-      smoothCount="10"
-      smoothTolerance=".01"
-      smoothThreshold="5"
-    >
-      <!-- create your content here. just a box for now -->
-      <a-box position='0 0.5 0' material='opacity: 0.5;'></a-box>
-      <!-- define a camera which will move according to the marker position -->
+        type="nft"
+        url="ar-prototyping/assets/personal/figure"
+        smooth="true"
+        smoothCount="10"
+        smoothTolerance=".01"
+        smoothThreshold="5"
+      >
+        <a-box position="50 150 0" width="5" height="5" color="#4CC3D9"></a-box>
       </a-nft>
       <a-entity camera></a-entity>
     </a-scene>
