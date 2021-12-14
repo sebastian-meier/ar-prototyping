@@ -7,7 +7,7 @@
   <body>
     <a-scene>
       <!-- Best practice. Preloading assets. -->
-      <a-assets>
+      <a-assets timeout="100000">
         <a-asset-item id="gltf-cube" src="../assets/gltf/cube.gltf"></a-asset-item>
         <img id="marker-image" src="../assets/images/marker.png">
         <video id="atomic-video" autoplay loop="true" src="../assets/images/atomic.mp4"></video>
