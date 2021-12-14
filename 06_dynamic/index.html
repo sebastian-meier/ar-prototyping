@@ -11,14 +11,14 @@
     </a-scene>
     <script>
       const scene = document.querySelector('a-scene');
-      for (let i = 0; i < 10; i += 1) {
+      for (let i = 0; i < 100; i += 1) {
         const box = document.createElement('a-box');
         box.setAttribute('color', '#4CC3D9');
         const size = Math.random();
         box.setAttribute('width', size);
         box.setAttribute('height', size);
         box.setAttribute('depth', size);
-        box.setAttribute('position', `3 0.5 ${i * 3}`);
+        box.setAttribute('position', `3 0.5 ${i * 1}`);
         scene.appendChild(box);
       }
     </script>
