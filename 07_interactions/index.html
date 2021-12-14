@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+    <script src="../assets/aframe/aframe-v1.2.0.min.js"></script>
+    <script src="../assets/arjs/aframe-ar.js"></script>
+    <style>
+      button {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 99999;
+      }
+    </style>
+  </head>
+  <body>
+    <a-scene embedded arjs>
+      <!-- Best practice. Preloading assets. -->
+      <a-assets timeout="3000">
+        <img id="set1-image" src="../assets/images/set1.png">
+        <img id="set2-image" src="../assets/images/set2.png">
+        <img id="set3-image" src="../assets/images/set3.png">
+      </a-assets>
+
+      <a-image position="-1 0.75 -3" width="1" height="1.5" src="#set1-image" id="displayimage"></a-image>
+    </a-scene>
+    <button id="btn">Next</button>
+    <script>
+      let currentSet = 1;
+      let maxSet = 3;
+      document.querySelector('#btn').addEventListener('click', () => {
+        currentSet += 1;
+        if (currentSet > maxSet) {
+          currentSet = 1;
+        }
+        const image = document.querySelector('#displayimage');
+        image.setAttribute('src', `#set${currentSet}-image`);
+      });
+    </script>
+  </body>
+</html>
