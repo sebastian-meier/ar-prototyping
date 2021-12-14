@@ -7,10 +7,10 @@
   <body>
     <a-scene>
       <!-- Best practice. Preloading assets. -->
-      <a-assets timeout="3000">
+      <a-assets timeout="5000">
         <a-asset-item id="gltf-cube" src="../assets/gltf/cube.gltf"></a-asset-item>
         <img id="marker-image" src="../assets/images/marker.png">
-        <video id="atomic-video" autoplay loop="true" src="../assets/images/atomic.mp4"></video>
+        <!--<video id="atomic-video" autoplay loop="true" src="../assets/images/atomic.mp4"></video>-->
       </a-assets>
 
       <!-- 3D primitives -->
@@ -20,17 +20,17 @@
       <a-plane position="0 0 -4" rotation="-90 0 0" width="10" height="4" color="#7BC8A4"></a-plane>
 
       <!-- Text -->
-      <a-text value="Hello, World!" position="1 1.25 -3"></a-text><!-- geometry="primitive:plane" -->
+      <a-text value="Hello, World!" rotation="45 0 0" position="1 1.25 -3"></a-text><!-- geometry="primitive:plane" -->
 
       <!-- Image & Video -->
       <a-image position="-1 0.75 -3" width="1" height="1.5" src="#marker-image"></a-image>
-      <a-video position="0 4 -3" src="#atomic-video" rotation="45 0 0" width="4" height="3"></a-video>-->
+      <!--<a-video position="0 4 -3" src="#atomic-video" rotation="45 0 0" width="4" height="3"></a-video>-->
 
       <!-- 3D assets -->
-      <a-gltf-model scale="1 1 1" position="-4 0 -5" src="#gltf-cube"></a-gltf-model>
+      <a-gltf-model scale="0.5 0.5 0.5" position="-5 2 -4" src="#gltf-cube"></a-gltf-model>
 
       <!-- Background / Sky -->
-      <a-sky color="#ECECEC"></a-sky>
+      <a-sky color="#000000"></a-sky>
     </a-scene>
   </body>
 </html>
