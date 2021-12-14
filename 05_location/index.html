@@ -1,16 +1,19 @@
 <!DOCTYPE html>
-<html lang="en" itemscope itemtype="http://schema.org/Article">
+<html lang="en">
 <head>
   <meta charset="utf-8">
-  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-  <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
-  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+    <script src="../assets/aframe/aframe-v1.2.0.min.js"></script>
+    <script src="../assets/arjs/aframe-ar-nft.js"></script>
+    <!-- <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script> -->
 </head>
-<body style='margin: 0; overflow: hidden;'>
+<body>
     <a-scene
         vr-mode-ui="enabled: false"
 		embedded
 		arjs='sourceType: webcam; debugUIEnabled: false;'>
+    <a-assets timeout="3000">
+        <img id="marker-image" src="../assets/images/marker.png">
+      </a-assets>
 
         <!-- ~ 400m far -->
         <!-- <a-box material="color: red;" scale="5 5 5" gps-entity-place="latitude: 44.506477; longitude: 11.301524;"></a-box> -->
@@ -46,15 +49,5 @@
         >
 		</a-camera>
 	</a-scene>
-  <div style="
-    position:fixed;
-    z-index:999;
-    top:0;
-    left:0;
-    background:white;
-    color:black;
-    padding: 3px 5px;
-    border: 1px solid black;
-  ">v0.118</div>
 </body>
 </html>
