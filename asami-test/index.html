@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+    <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@0d804add6133bc90dab1ce708fd5e3be9855cc98/dist/aframe-master.min.js"></script>
+    <script src="../assets/arjs/aframe-ar-nft.js"></script>
+    <style>
+      .arjs-loader {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.8);
+        z-index: 9999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .arjs-loader div {
+        text-align: center;
+        font-size: 1.25em;
+        color: white;
+      }
+
+      button {
+        position: fixed;
+        top: 200px;
+        left: 10px;
+        z-index: 99999;
+      }
+
+      .graffiti-paint {
+        position: absolute;
+    top: 0%;
+    left: 0%;
+      }
+    </style>
+  </head>
+  <body>
+
+
+  <div class="arjs-loader">
+    <div>Loading, please wait...</div>
+  </div>
+  <div class="graffiti-paint">
+    	<img src="../assets/images/graffiti-paint.png" alt="graffiti-paint">
+  </div>
+    <a-scene vr-mode-ui="enabled: false;"
+    renderer="logarithmicDepthBuffer: true;"
+    embedded
+    arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;"
+    device-orientation-permission-ui="enabled: false;">
+     
+      <a-assets timeout="3000">
+        <a-asset-item id="gltf-mauer" src="../assets/gltf/berlinmauer.gltf"></a-asset-item>
+        <img id="set1-image" src="../assets/images/set1.png">
+        <img id="set2-image" src="../assets/images/set2.png">
+        <img id="set3-image" src="../assets/images/set3.png">
+        <img id="set-static1-image" src="../assets/images/set1.png">
+        <img id="set-static2-image" src="../assets/images/set2.png">
+        <img id="set-static3-image" src="../assets/images/set3.png">
+        <img id="marker-image" src="../assets/images/marker.png">
+      </a-assets>
+
+      <a-image position="-1 0.75 -3" width="1" height="1.5" id="staticimage" src="#set1-image"></a-image>
+      <a-nft
+        type="nft"
+        size="0.5"
+        url="ar-prototyping/assets/asami/220112Graffiti-erzaehlt-Berlin"
+        smooth="true"
+        smoothCount="5"
+        smoothTolerance=".1"
+        smoothThreshold="2"
+        >
+        <!--<a-image position="500 0.75 0" rotation="-90 0 0" width="50" height="150" src="#set1-image"></a-image>-->
+        
+        <a-image position="500 100 -300" rotation="-90 0 0" width="50" height="150"  id="displayimage" src="#set1-image"></a-image>
+        <a-gltf-model scale="50 70 30" position="350 -100 -400" rotation="0 90 90" src="#gltf-mauer"></a-gltf-model>
+      </a-nft>
+      <a-entity camera></a-entity>
+    </a-scene>
+    <button id="btn">Next</button>
+    <script>
+      let currentSet = 1;
+      let maxSet = 3;
+      document.querySelector('#btn').addEventListener('click', () => {
+        currentSet += 1;
+        if (currentSet > maxSet) {
+          currentSet = 1;
+        }
+        const image = document.querySelector('#displayimage');
+        image.setAttribute('src', `#set${currentSet}-image`);
+        
+        const staticImage = document.querySelector('#staticimage');
+        staticImage.setAttribute('src', `#set-static${currentSet}-image`);
+      });
+    </script>
+  
+   
+  </body>
+</html>
